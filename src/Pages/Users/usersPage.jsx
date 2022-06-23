@@ -1,7 +1,7 @@
 const UsersPage = () => {
     return (
       <>
-        <h1>Home Page of the Front End Challenge</h1>
+        <h1>Users Page</h1>
       </>
     );
   };

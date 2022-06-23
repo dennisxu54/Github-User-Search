@@ -1,30 +1,35 @@
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import AboutPage from "../../Pages/About/aboutPage";
 import HomePage from "../../Pages/Home/homePage";
+import UsersPage from "../../Pages/Users/usersPage";
+import "./navBar.css";
 
 export default function NavBar() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+    <div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <Routes>
-          <Route path="/about" />
-          <Route path="/users" />
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/users" element={<UsersPage />} />
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
 }
