@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import AboutPage from "../../Pages/About/aboutPage";
 import HomePage from "../../Pages/Home/homePage";
 import UsersPage from "../../Pages/Users/usersPage";
-import "./navBar.css";
 
 export default function NavBar() {
   return (
