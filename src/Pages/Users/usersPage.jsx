@@ -12,7 +12,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`https://api.github.com/users/${search}`);
+        const res = await fetch(`https://api.github.com/search/users?q=${search}`);
         const data = await res.json();
         setUserData(data);
       }
@@ -29,7 +29,9 @@ const UsersPage = () => {
       <>
         <h1>Users Page</h1>
         <SearchBox />
-        {userData ? <p>{userData.login}</p>: <p>Data is not ready</p>}
+        {userData ? 
+        userData.items.map((user) => <li key={user.id}>{user.login}</li>) : 
+        <p>Data is not ready</p>}
       </>
     );
   };
