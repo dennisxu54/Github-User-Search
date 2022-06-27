@@ -1,12 +1,17 @@
-const SearchBox = ({ searchChange }) => {
+import { useState } from "react";
+
+const SearchBox = ({ }) => {
+
   return (
-    <div>
-      <input
-        type='search'
-        placeholder='search users'
-        onChange={searchChange}
-      />
-    </div>
+    <form action="/users" method="get">
+        <input
+            type="text"
+            id="header-search"
+            placeholder="Search users"
+            name="s"
+        />
+        <button type="submit">Search</button>
+    </form>
   );
 }
 
