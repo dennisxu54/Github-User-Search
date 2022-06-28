@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const UserCard = ({ userDetails }) => {
 
     // [...filteredUsers].sort((a, b) => a.created_at.localeCompare(b.created_at)).map((user) => <li key={user.id}>{user.login}</li>
@@ -8,6 +10,9 @@ const UserCard = ({ userDetails }) => {
         <p>The date is {userDetails.created_at}</p>
         <p>The followers is {userDetails.followers}</p>
         <p>The public_repos is {userDetails.public_repos}</p>
+        <Link to={`/users/:${userDetails.id}`}>
+          <button>Click</button>
+        </Link>
         <br></br>
       </div>
     );
