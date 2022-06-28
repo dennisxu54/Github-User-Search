@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import SearchBox from "../../Components/SearchBox/searchBox";
 import * as qs from "query-string";
 import DropDown from "../../Components/DropDown/dropDown";
+import UserCard from "../../Components/UserCard/userCard";
 
 const UsersPage = () => {
   const [userData, setUserData] = useState();
@@ -16,11 +17,21 @@ const UsersPage = () => {
   }
 
   // This function just returns a promise
-  function getData(user) {
+  const getData = (user) => {
     return fetch(`https://api.github.com/users/${user.login}`)
       .then(response=>{
         return response.json()
       })
+  }
+
+  const sortData = (userArray) => {
+    if (sortValue === 'Created_at') {
+      return [...userArray].sort((a, b) => a.created_at.localeCompare(b.created_at))
+    } else if (sortValue === 'Public_repos') {
+      return [...userArray].sort((a, b) => a.public_repos - b.public_repos)
+    } else if (sortValue === 'Followers') {
+      return [...userArray].sort((a, b) => a.followers - b.followers)
+    }
   }
 
   useEffect(() => {
@@ -39,7 +50,7 @@ const UsersPage = () => {
   }, [search])
 
   useEffect(() => {
-    const sortUsers = async () => {
+    const getSpecificUsers = async () => {
       try {
         Promise.all(userData.items.map(getData))
         .then((results) => {
@@ -53,7 +64,7 @@ const UsersPage = () => {
       }
     }
 
-    sortUsers();
+    getSpecificUsers();
   }, [userData])
 
 
@@ -63,7 +74,7 @@ const UsersPage = () => {
         <SearchBox />
         <DropDown name='Sorting by' value={sortValue} handleChange={handleChange} />
         {filteredUsers ? 
-        [...filteredUsers].sort((a, b) => a.created_at.localeCompare(b.created_at)).map((user) => <li key={user.id}>{user.login}</li>) : 
+        sortData(filteredUsers).map((user) => <UserCard key={user.id} userDetails={user} />) : 
         <p>Data is not ready</p>}
         
       </>
