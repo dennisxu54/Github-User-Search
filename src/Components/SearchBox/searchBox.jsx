@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const SearchBox = ({ }) => {
+const SearchBox = () => {
 
   return (
     <form action="/users" method="get">
