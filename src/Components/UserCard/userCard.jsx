@@ -10,7 +10,7 @@ const UserCard = ({ userDetails }) => {
         <p>The date is {userDetails.created_at}</p>
         <p>The followers is {userDetails.followers}</p>
         <p>The public_repos is {userDetails.public_repos}</p>
-        <Link to={`/users/:${userDetails.id}`}>
+        <Link to={`/users/${userDetails.login}`}>
           <button>Click</button>
         </Link>
         <br></br>

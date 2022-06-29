@@ -26,7 +26,7 @@ export default function NavBar() {
           <Routes>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/users" element={<UsersPage />} />
-            <Route path="/users/:id" element={<UserDetail />} />
+            <Route path="/users/:userID" element={<UserDetail />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
