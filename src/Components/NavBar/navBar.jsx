@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import AboutPage from "../../Pages/About/aboutPage";
 import HomePage from "../../Pages/Home/homePage";
+import UserDetail from "../../Pages/UserDetails/userDetails";
 import UsersPage from "../../Pages/Users/usersPage";
 
 export default function NavBar() {
@@ -25,6 +26,7 @@ export default function NavBar() {
           <Routes>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/users" element={<UsersPage />} />
+            <Route path="/users/:userID" element={<UserDetail />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
