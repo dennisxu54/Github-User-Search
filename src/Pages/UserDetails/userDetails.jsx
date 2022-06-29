@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import SpecificUser from "../../Components/SpecificUser/specificUser";
 
 const UserDetail = () => {
   let { userID } = useParams();
@@ -21,9 +22,10 @@ const UserDetail = () => {
   }, [userID])
 
     return (
-      <>
-        <h1>This is the param {userID}</h1>
-      </>
+      <div>
+        <h3>This is the details of the user {userID}</h3>
+        <SpecificUser userDetails={oneUser} />
+      </div>
     );
   };
   

@@ -1,0 +1,12 @@
+.user-detail {
+    display: flex;
+    border: 2px solid blue;
+    margin: 1em 50px 1em 50px;
+    padding-left: 10px;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    float: left;
+}
