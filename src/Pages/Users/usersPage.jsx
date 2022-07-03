@@ -4,6 +4,7 @@ import SearchBox from "../../Components/SearchBox/searchBox";
 import * as qs from "query-string";
 import DropDown from "../../Components/DropDown/dropDown";
 import UserCard from "../../Components/UserCard/userCard";
+import "./usersPage.css"
 
 const UsersPage = () => {
   const [userData, setUserData] = useState();
@@ -70,6 +71,7 @@ const UsersPage = () => {
 
     return (
       <>
+      <div className="users-page">
         <h1>Users Page</h1>
         <SearchBox />
         <DropDown name='Sorting by' value={sortValue} handleChange={handleChange} />
@@ -77,6 +79,7 @@ const UsersPage = () => {
         sortData(filteredUsers).map((user) => <UserCard key={user.id} userDetails={user} />) : 
         <p>Data is not ready</p>}
         
+      </div>
       </>
     );
   };
