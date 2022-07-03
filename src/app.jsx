@@ -8,7 +8,7 @@ import NavBar from "./Components/NavBar/navBar";
 export default function App() {
   return (
     <Router>
-        <NavBar />
+      <NavBar />
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/users" element={<UsersPage />} />

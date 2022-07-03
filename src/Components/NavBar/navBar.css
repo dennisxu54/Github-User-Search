@@ -1,6 +1,49 @@
+.logo {
+  float: left;
+  color: white;
+  font-size: 250%;
+  padding-left: 8px;
+}
+
 .nav-bar {
     overflow: hidden;
     position: fixed;
     top: 0;
     width: 100%;
+    padding: 10px 0 10px 0;
+    background-color: rgb(56, 56, 179);
 }
+
+.nav-bar ul {
+  float: right;
+}
+
+.nav-bar ul li {
+    position: relative;
+    list-style: none;
+    display: inline;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.nav-bar a{
+    text-decoration: none;
+    color: #0e151d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #fff;
+    transition: all ease-in-out 0.2s;
+  
+  }
+
+  nav a:hover{
+    background: rgb(166, 175, 255);
+    transition: all ease-in-out 0.2s;
+  }
+
+  nav .active{
+    background: #5855F3;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+  }
