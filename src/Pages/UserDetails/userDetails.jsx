@@ -26,7 +26,7 @@ const UserDetail = () => {
       <div>
         <div className="user-details">
 
-        <h3>This is the details of the user {userID}</h3>
+        <h2>This is the details of the user {userID}</h2>
         {oneUser ? 
         <SpecificUser userDetails={oneUser} /> : 
         <p>Data is not ready</p>}

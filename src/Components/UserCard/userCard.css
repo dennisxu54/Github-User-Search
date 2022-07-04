@@ -2,5 +2,9 @@
     border: 2px solid grey;
     margin: 10px 0;
     width: calc(25% - 10px);
-    padding-bottom: 8px;
+    padding: 8px 0;
+}
+
+img {
+    border-radius: 50%;
 }

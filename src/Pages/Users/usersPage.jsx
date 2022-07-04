@@ -4,85 +4,92 @@ import SearchBox from "../../Components/SearchBox/searchBox";
 import * as qs from "query-string";
 import DropDown from "../../Components/DropDown/dropDown";
 import UserCard from "../../Components/UserCard/userCard";
-import "./usersPage.css"
+import "./usersPage.css";
 
 const UsersPage = () => {
   const [userData, setUserData] = useState();
   const [filteredUsers, setFilteredUsers] = useState();
   const location = useLocation();
   const { s: search } = qs.parse(location.search);
-  const [sortValue, setSortValue] = useState('Created_at');
+  const [sortValue, setSortValue] = useState("Created_at");
 
   const handleChange = (event) => {
-    setSortValue(event.target.value)
-  }
+    setSortValue(event.target.value);
+  };
 
   // This function just returns a promise
   const getData = (user) => {
-    return fetch(`https://api.github.com/users/${user.login}`)
-      .then(response=>{
-        return response.json()
-      })
-  }
+    return fetch(`https://api.github.com/users/${user.login}`).then(
+      (response) => {
+        return response.json();
+      }
+    );
+  };
 
   const sortData = (userArray) => {
-    if (sortValue === 'Created_at') {
-      return [...userArray].sort((a, b) => a.created_at.localeCompare(b.created_at))
-    } else if (sortValue === 'Public_repos') {
-      return [...userArray].sort((a, b) => a.public_repos - b.public_repos)
-    } else if (sortValue === 'Followers') {
-      return [...userArray].sort((a, b) => a.followers - b.followers)
+    if (sortValue === "Created_at") {
+      return [...userArray].sort((a, b) =>
+        a.created_at.localeCompare(b.created_at)
+      );
+    } else if (sortValue === "Public_repos") {
+      return [...userArray].sort((a, b) => a.public_repos - b.public_repos);
+    } else if (sortValue === "Followers") {
+      return [...userArray].sort((a, b) => a.followers - b.followers);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`https://api.github.com/search/users?q=${search}&per_page=4`);
+        const res = await fetch(
+          `https://api.github.com/search/users?q=${search}&per_page=7`
+        );
         const data = await res.json();
         setUserData(data);
+      } catch (error) {
+        console.log(error);
       }
-      catch(error) {
-        console.log(error)
-      }
-    }
+    };
 
     fetchUsers();
-  }, [search])
+  }, [search]);
 
   useEffect(() => {
     const getSpecificUsers = async () => {
       try {
-        Promise.all(userData.items.map(getData))
-        .then((results) => {
+        Promise.all(userData.items.map(getData)).then((results) => {
           // When all the promises have been resolved, then this will be executed
           //Here all the promises have been resolved, so you would have an array with the ttTimes
           setFilteredUsers(results);
-        })
+        });
+      } catch (error) {
+        console.log(error);
       }
-      catch(error) {
-        console.log(error)
-      }
-    }
+    };
 
     getSpecificUsers();
-  }, [userData])
+  }, [userData]);
 
-
-    return (
-      <>
-      <div className="users-page">
-        <h1>Users Page</h1>
-        <SearchBox />
-        <DropDown name='Sorting by' value={sortValue} handleChange={handleChange} />
-        {filteredUsers ? 
-        sortData(filteredUsers).map((user) => <UserCard key={user.id} userDetails={user} />) : 
-        <p>Data is not ready</p>}
-        
+  return (
+    <div className="users-page">
+      <h1>Users Page</h1>
+      <SearchBox />
+      <DropDown
+        name="Sorting by"
+        value={sortValue}
+        handleChange={handleChange}
+      />
+      <div className="users">
+        {filteredUsers ? (
+          sortData(filteredUsers).map((user) => (
+            <UserCard key={user.id} userDetails={user} />
+          ))
+        ) : (
+          <p>Data is not ready</p>
+        )}
       </div>
-      </>
-    );
-  };
-  
-  export default UsersPage;
-  
+    </div>
+  );
+};
+
+export default UsersPage;
