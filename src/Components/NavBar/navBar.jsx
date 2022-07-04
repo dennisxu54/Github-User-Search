@@ -3,24 +3,15 @@ import "./navBar.css";
 
 export default function NavBar() {
   return (
-    <div>
- 
       <nav className="nav-bar">
-        <div className="logo">
           <span>Logo</span> 
-        </div>
-        <ul>
-          <li>
+
+          <div>
             <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
             <NavLink to="/about">About</NavLink>
-          </li>
-          <li>
             <NavLink to="/users">Users</NavLink>
-          </li>
-        </ul>
+          </div>
+
       </nav>
-    </div>
   );
 }
