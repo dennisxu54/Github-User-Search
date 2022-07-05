@@ -1,7 +1,29 @@
 .user-details {
-    margin-top: 50px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.title-segment {
+    display: flex;
+}
+
+.return-button {
+    border-radius: 10px;
+    background-color: navy;
+    color: whitesmoke;
+    padding: 0.4rem;
+    float: left;
+    margin: auto 0 auto 1rem;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.return-button:hover {
+    background-color: aliceblue;
+    color: blue;
 }
 
 h2 {
-    text-align: center;
+    display: inline-block;
+    margin: auto;
 }

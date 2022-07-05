@@ -1,8 +1,8 @@
+import * as qs from "query-string";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import SearchBox from "../../Components/SearchBox/searchBox";
-import * as qs from "query-string";
 import DropDown from "../../Components/DropDown/dropDown";
+import SearchBox from "../../Components/SearchBox/searchBox";
 import UserCard from "../../Components/UserCard/userCard";
 import "./usersPage.css";
 
