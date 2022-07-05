@@ -3,8 +3,17 @@
     margin: 10px 0;
     width: calc(25% - 10px);
     padding: 8px 0;
+    text-decoration: none;
+    color: black;
+    transition: .3s ease;
+}
+
+.user-card:hover {
+    background-color: #eee;
 }
 
 img {
     border-radius: 50%;
+    width: 200px;
+    height: auto;
 }
