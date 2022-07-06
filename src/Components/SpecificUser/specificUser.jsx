@@ -3,50 +3,50 @@ import "./specificUser.css";
 const SpecificUser = ({ userDetails }) => {
   const {
     login,
-    id,
-    node_id,
     avatar_url,
-    gravatar_id,
-    url,
     html_url,
     followers_url,
-    following_url,
-    gists_url,
-    starred_url,
     subscriptions_url,
     organizations_url,
     repos_url,
-    events_url,
-    received_events_url,
-    type,
-    site_admin,
     name,
-    company,
     blog,
     location,
-    email,
-    hireable,
     bio,
-    twitter_username,
     public_repos,
     public_gists,
     followers,
     following,
     created_at,
-    updated_at
   } = userDetails;
 
   return (
     <div className="detail-box">
-      <img src={avatar_url} alt="avatar image" />
-      <div className="user-detail">
-        <b>Name: {name}</b>
-        <div>This account was created at: {created_at}</div>
-        <div>This account currently has {followers} followers</div>
-        <div>This account is currently following {} other users</div>
-        <div>This account has {public_repos} Public Repositories</div>
+      <img src={avatar_url} alt="avatar" className="user-detail-img" />
+      <div>
+        <p>
+          Login: <b>{login}</b>
+        </p>
+        <p>
+          Github page: <a href={html_url}>{html_url}</a>
+        </p>
+        <p>Followers URL: {followers_url}</p>
+        <p>Following: {subscriptions_url}</p>
+        <p>Public Repositories: {organizations_url}</p>
+        <p>Public Repositories: {repos_url}</p>
+        {blog ? <p>User's blog: {blog}</p> : <p>User has no blog</p>}
       </div>
       <div>
+        <p>
+          Name: <b>{name}</b>
+        </p>
+        <p>Created at: {bio}</p>
+        <p>Created at: {location}</p>
+        <p>Created at: {created_at}</p>
+        <p>Followers: {followers}</p>
+        <p>Following: {following} users</p>
+        <p>Public Gists: {public_gists}</p>
+        <p>Public Repositories: {public_repos}</p>
       </div>
     </div>
   );

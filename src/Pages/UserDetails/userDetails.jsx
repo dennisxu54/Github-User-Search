@@ -25,8 +25,14 @@ const UserDetail = () => {
   return (
     <div className="user-details">
       <div className="title-segment">
-        <button role="link" className="return-button" onClick={() => navigate(-1)}>Return</button>
-        <h2>This is the details of the user {userID}</h2>
+        <button
+          role="link"
+          className="return-button"
+          onClick={() => navigate(-1)}
+        >
+          Return
+        </button>
+        <h2 className="user-detail-title">This is the details of the user {userID}</h2>
       </div>
       {oneUser ? (
         <SpecificUser userDetails={oneUser} />

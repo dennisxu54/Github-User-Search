@@ -6,11 +6,8 @@
     justify-content: space-between;
 }
 
-.user-detail {
-    text-align: center;
-}
-
-img {
+.user-detail-img {
+    border-radius: 50%;
     width: 250px;
-    height: 250px;
+    height: auto;
 }
