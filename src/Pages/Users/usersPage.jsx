@@ -41,6 +41,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        // Starting search is undefined.
         const res = await fetch(
           `https://api.github.com/search/users?q=${search}&per_page=7`
         );
