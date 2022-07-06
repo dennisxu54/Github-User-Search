@@ -1,21 +1,78 @@
-import "./specificUser.css"
+import "./specificUser.css";
 
 const SpecificUser = ({ userDetails }) => {
-    const { login, avatar_url, created_at, followers, public_repos } = userDetails;
+  const {
+    login,
+    avatar_url,
+    html_url,
+    followers_url,
+    subscriptions_url,
+    organizations_url,
+    repos_url,
+    name,
+    blog,
+    location,
+    bio,
+    public_repos,
+    public_gists,
+    followers,
+    following,
+    created_at,
+  } = userDetails;
 
-    return (
-      <div className="user-detail">
-        <img src={avatar_url} alt="avatar image" />
-        <div>
-        <b>Name: {login}</b>
-        <div>This account was created at: {created_at}</div>
-        <div>This account currently has {followers} followers</div>
-        <div>This account is currently following {} other users</div>
-        <div>This account has {public_repos} Public Repositories</div>
-        </div>
+  return (
+    <div className="detail-box">
+      <img src={avatar_url} alt="avatar" className="user-detail-img" />
 
+      <div>
+        <p>
+          Login: <b>{login}</b>
+        </p>
+        {bio ? <p>Introduction: {bio}</p> : <p>User does not have a Bio</p>}
+        <p>
+          Github page: <a href={html_url}>{html_url}</a>
+        </p>
+        <p>
+        Following:{" "}
+          <a href={`https://github.com/${login}?tab=following`}>{following}</a>
+        </p>
+        <p>
+          Followers:{" "}
+          <a href={`https://github.com/${login}?tab=followers`}>{followers}</a>
+        </p>
+        <p>
+          Public Repositories:{" "}
+          <a href={`https://github.com/${login}?tab=repositories`}>
+            {public_repos}
+          </a>
+        </p>
       </div>
-    );
-  }
-  
-  export default SpecificUser;
+
+      <div>
+        {name !== "undefined" ? (
+          <p>
+            Name: <b>{name}</b>
+          </p>
+        ) : (
+          <p>Name: -----</p>
+        )}
+        {location ? (
+          <p>Country: {location}</p>
+        ) : (
+          <p>User has not entered their Country</p>
+        )}
+        <p>Created at: {created_at.slice(0, 10) + " " + created_at.slice(11, -1)}</p>
+        <p>Public Gists: {public_gists}</p>
+        {blog ? (
+          <p>
+            User's blog: <a href={repos_url}>{blog}</a>
+          </p>
+        ) : (
+          <p>User has no blog website</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default SpecificUser;

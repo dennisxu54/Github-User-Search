@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
+import "./userCard.css";
 
 const UserCard = ({ userDetails }) => {
-  const { login, created_at, followers, public_repos } = userDetails;
+  const { login, avatar_url, public_repos, followers, created_at } =
+    userDetails;
 
-    return (
-      <div>
-        <p><b>The name is {login}</b></p>
-        <p>The date is {created_at}</p>
-        <p>The followers is {followers}</p>
-        <p>The public_repos is {public_repos}</p>
-        <Link to={`/users/${login}`}>
-          <button>Click</button>
-        </Link>
-        <br></br>
-      </div>
-    );
-  }
-  
-  export default UserCard;
+  return (
+    <Link to={`/users/${login}`} className="user-card">
+      <img src={avatar_url} alt="Avatar" className="user-card-img" />
+      <p>
+        <b>{login}</b>
+      </p>
+      <p>
+        Created at: {created_at.slice(0, 10) + " " + created_at.slice(11, -1)}
+      </p>
+      <p>Followers: {followers}</p>
+      <p>Public repos: {public_repos}</p>
+    </Link>
+  );
+};
+
+export default UserCard;
