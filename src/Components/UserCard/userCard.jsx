@@ -7,7 +7,7 @@ const UserCard = ({ userDetails }) => {
 
   return (
     <Link to={`/users/${login}`} className="user-card">
-      <img src={avatar_url} alt="Avatar"></img>
+      <img src={avatar_url} alt="Avatar" className="user-card-img" />
       <p>
         <b>{login}</b>
       </p>

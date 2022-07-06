@@ -23,7 +23,7 @@
     color: blue;
 }
 
-h2 {
+.user-detail-title {
     display: inline-block;
     margin: auto;
 }
