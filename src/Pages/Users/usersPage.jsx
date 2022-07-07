@@ -2,7 +2,6 @@ import * as qs from "query-string";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import DropDown from "../../Components/DropDown/dropDown";
-import ParticlesComponent from "../../Components/Particles/Particles";
 import SearchBox from "../../Components/SearchBox/searchBox";
 import UserCard from "../../Components/UserCard/userCard";
 import "./usersPage.css";
@@ -74,7 +73,6 @@ const UsersPage = () => {
 
   return (
     <div className="users-page">
-      <ParticlesComponent id="users-page-particles" />
       <h1>Users Page</h1>
       <SearchBox />
       <DropDown

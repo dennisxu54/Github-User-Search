@@ -40,23 +40,23 @@ const ParticlesComponent = ({ id }) => {
         color: {
           value: "#0d47a1",
         },
-        links: {
-          color: {
-            value: "#000000",
-          },
-          enable, // This shows linkage between points
-          distance: 100, //Maximum distance between particles
-        },
+        // links: {
+        //   color: {
+        //     value: "#000000",
+        //   },
+        //   enable, // This shows linkage between points
+        //   distance: 100, //Maximum distance between particles
+        // },
         move: {
           enable, // This enables movement
-          speed: { min: 1, max: 3 }, // Randomize the speed of each particle
+          // speed: { min: 1, max: 3 }, // Randomize the speed of each particle
         },
-        opacity: {
-          value: { min: 0.3, max: 0.7 }, // Semi-transparent effects
-        },
-        size: {
-          value: { min: 1, max: 3 }, // This randomly assigns a size to the particles
-        },
+        // opacity: {
+        //   value: { min: 0.3, max: 0.7 }, // Semi-transparent effects
+        // },
+        // size: {
+        //   value: { min: 1, max: 3 }, // This randomly assigns a size to the particles
+        // },
       },
     };
   }, [enable]);
