@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import ParticlesComponent from "../../Components/Particles/Particles";
 import SpecificUser from "../../Components/SpecificUser/specificUser";
 import "./userDetails.css";
 
@@ -24,6 +25,7 @@ const UserDetail = () => {
 
   return (
     <div className="user-details">
+      <ParticlesComponent id="details-page-particles" />
       <div className="title-segment">
         <button
           role="link"
@@ -32,7 +34,9 @@ const UserDetail = () => {
         >
           Return
         </button>
-        <h2 className="user-detail-title">This is the details of the user {userID}</h2>
+        <h2 className="user-detail-title">
+          This is the details of the user {userID}
+        </h2>
       </div>
       {oneUser ? (
         <SpecificUser userDetails={oneUser} />
