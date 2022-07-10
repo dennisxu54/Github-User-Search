@@ -80,6 +80,7 @@ const UsersPage = () => {
         value={sortValue}
         handleChange={handleChange}
       />
+
       <div className="users">
         {filteredUsers ? (
           sortData(filteredUsers).map((user) => (
