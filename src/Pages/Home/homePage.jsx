@@ -10,7 +10,7 @@ const HomePage = () => {
       <div>
         <button
           onClick={() => navigate("/users", { replace: true })}
-          className="search-button"
+          className="user-page-navigate-button"
         >
           Start Searching!
         </button>

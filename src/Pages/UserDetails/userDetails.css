@@ -12,10 +12,11 @@
   background-color: navy;
   color: whitesmoke;
   padding: 0.4rem;
-  float: left;
   margin: auto 0 auto 1rem;
   cursor: pointer;
   transition: 0.3s ease;
+  margin: auto;
+  margin-right: 1rem;
 }
 
 .return-button:hover {
@@ -26,4 +27,5 @@
 .user-detail-title {
   display: inline-block;
   margin: auto;
+  margin-left: 0;
 }

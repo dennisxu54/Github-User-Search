@@ -13,7 +13,7 @@
   background-color: white;
 }
 
-.search-button {
+.user-page-navigate-button {
   background-color: rgb(0, 119, 255);
   color: white;
   font-size: larger;
@@ -25,7 +25,7 @@
   transition: .3s ease;
 }
 
-.search-button:hover {
+.user-page-navigate-button:hover {
   background-color: white;
   color: rgb(0, 119, 255);
   border: 1px solid rgb(0, 119, 255);
