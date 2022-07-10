@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .nav-bar span {
   margin-left: 10px;
   font-size: 1.5rem;
@@ -29,3 +33,4 @@
   background-color: rgb(61, 81, 255);
   color: white;
 }
+
