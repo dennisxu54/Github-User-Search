@@ -1,4 +1,3 @@
-import AboutPage from "./Pages/About/aboutPage";
 import HomePage from "./Pages/Home/homePage";
 import UserDetail from "./Pages/UserDetails/userDetails";
 import UsersPage from "./Pages/Users/usersPage";
@@ -10,7 +9,6 @@ export default function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users/:userID" element={<UserDetail />} />
         <Route path="/" element={<HomePage />} />
