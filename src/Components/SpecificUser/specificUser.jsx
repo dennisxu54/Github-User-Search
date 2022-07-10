@@ -5,9 +5,6 @@ const SpecificUser = ({ userDetails }) => {
     login,
     avatar_url,
     html_url,
-    followers_url,
-    subscriptions_url,
-    organizations_url,
     repos_url,
     name,
     blog,
@@ -33,7 +30,7 @@ const SpecificUser = ({ userDetails }) => {
           Github page: <a href={html_url}>{html_url}</a>
         </p>
         <p>
-        Following:{" "}
+          Following:{" "}
           <a href={`https://github.com/${login}?tab=following`}>{following}</a>
         </p>
         <p>
@@ -61,7 +58,9 @@ const SpecificUser = ({ userDetails }) => {
         ) : (
           <p>User has not entered their Country</p>
         )}
-        <p>Created at: {created_at.slice(0, 10) + " " + created_at.slice(11, -1)}</p>
+        <p>
+          Created at: {created_at.slice(0, 10) + " " + created_at.slice(11, -1)}
+        </p>
         <p>Public Gists: {public_gists}</p>
         {blog ? (
           <p>

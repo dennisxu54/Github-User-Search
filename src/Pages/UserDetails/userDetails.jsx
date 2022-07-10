@@ -28,14 +28,20 @@ const UserDetail = () => {
         <button
           role="link"
           className="return-button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/users", { replace: true })}
         >
-          Return
+          Return to the Users
         </button>
-        <h2 className="user-detail-title">This is the details of the user {userID}</h2>
+        <h2 className="user-detail-title">
+          This is the details of the user {userID}
+        </h2>
       </div>
       {oneUser ? (
-        <SpecificUser userDetails={oneUser} />
+        oneUser.message !== "Not Found" ? (
+          <SpecificUser userDetails={oneUser} />
+        ) : (
+          <p>There is no user with this Login</p>
+        )
       ) : (
         <p>Data is not ready</p>
       )}

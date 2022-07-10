@@ -1,3 +1,32 @@
 .home-page {
-    margin-top: 50px;
+  display: flex;
+  margin-top: 60px;
+  height: 40vmin;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
+
+.home-page-title {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.user-page-navigate-button {
+  background-color: rgb(0, 119, 255);
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 1rem;
+  transition: .3s ease;
+}
+
+.user-page-navigate-button:hover {
+  background-color: white;
+  color: rgb(0, 119, 255);
+  border: 1px solid rgb(0, 119, 255);
+} 

@@ -6,6 +6,7 @@
     text-decoration: none;
     color: black;
     transition: .3s ease;
+    background-color: whitesmoke;
 }
 
 .user-card:hover {

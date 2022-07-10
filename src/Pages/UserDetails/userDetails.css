@@ -1,29 +1,31 @@
 .user-details {
-    margin-top: 60px;
-    text-align: center;
+  margin-top: 60px;
+  text-align: center;
 }
 
 .title-segment {
-    display: flex;
+  display: flex;
 }
 
 .return-button {
-    border-radius: 10px;
-    background-color: navy;
-    color: whitesmoke;
-    padding: 0.4rem;
-    float: left;
-    margin: auto 0 auto 1rem;
-    cursor: pointer;
-    transition: .3s ease;
+  border-radius: 10px;
+  background-color: navy;
+  color: whitesmoke;
+  padding: 0.4rem;
+  margin: auto 0 auto 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: auto;
+  margin-right: 1rem;
 }
 
 .return-button:hover {
-    background-color: aliceblue;
-    color: blue;
+  background-color: aliceblue;
+  color: blue;
 }
 
 .user-detail-title {
-    display: inline-block;
-    margin: auto;
+  display: inline-block;
+  margin: auto;
+  margin-left: 0;
 }
