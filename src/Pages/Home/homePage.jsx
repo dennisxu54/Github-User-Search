@@ -1,11 +1,20 @@
-import ParticlesComponent from "../../Components/Particles/Particles";
+import { useNavigate } from "react-router-dom";
 import "./homePage.css";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home-page">
-      <ParticlesComponent id="home-page-particles" />
-      <h1>Home Page of the Front End Challenge</h1>
+      <h1 className="home-page-title">Home Page of the Github User search</h1>
+      <div>
+        <button
+          onClick={() => navigate("/users", { replace: true })}
+          className="search-button"
+        >
+          Start Searching!
+        </button>
+      </div>
     </div>
   );
 };
