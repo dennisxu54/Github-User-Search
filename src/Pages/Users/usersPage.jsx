@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import DropDown from "../../Components/DropDown/dropDown";
 import SearchBox from "../../Components/SearchBox/searchBox";
+import Toast from "../../Components/Toast/toast";
 import UserCard from "../../Components/UserCard/userCard";
 import "./usersPage.css";
 
@@ -12,6 +13,7 @@ const UsersPage = () => {
   const location = useLocation();
   const { s: search } = qs.parse(location.search);
   const [sortValue, setSortValue] = useState("Created_at");
+  const [error, setError] = useState(false);
 
   const handleChange = (event) => {
     setSortValue(event.target.value);
@@ -43,12 +45,12 @@ const UsersPage = () => {
       try {
         // Starting search is undefined.
         const res = await fetch(
-          `https://api.github.com/search/users?q=${search}&per_page=8`
+          `https://api.github.com/srch/users?q=${search}&per_page=8`
         );
         const data = await res.json();
         setUserData(data);
       } catch (error) {
-        console.log(error);
+        setError("An error happened in user fetch - UsersPage");
       }
     };
 
@@ -58,13 +60,14 @@ const UsersPage = () => {
   useEffect(() => {
     const getSpecificUsers = async () => {
       try {
-        Promise.all(userData.items.map(getData)).then((results) => {
-          // When all the promises have been resolved, then this will be executed
-          //Here all the promises have been resolved, so you would have an array with the ttTimes
-          setFilteredUsers(results);
-        });
+        userData &&
+          Promise.all(userData.items.map(getData)).then((results) => {
+            // When all the promises have been resolved, then this will be executed
+            //Here all the promises have been resolved, so you would have an array with the ttTimes
+            setFilteredUsers(results);
+          });
       } catch (error) {
-        console.log(error);
+        setError("An error happened in specific user fetch - UsersPage");
       }
     };
 
@@ -90,6 +93,11 @@ const UsersPage = () => {
           <p>Data is not ready</p>
         )}
       </div>
+      {error && (
+        <div onClick={() => setError(false)}>
+          <Toast message={error} />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,28 @@
+.toast-close-button {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  cursor: pointer;
+  float: right;
+  border: none;
+  background-color: white;
+}
+
+.notification-container {
+  cursor: pointer;
+  position: fixed;
+  padding: 0.9em;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid salmon;
+  animation: toastMove 2s;
+}
+
+@keyframes toastMove {
+  0% {
+    right: -7rem;
+  }
+  100% {
+    right: 1rem;
+  }
+}
