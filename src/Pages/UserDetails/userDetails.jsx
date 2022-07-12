@@ -13,7 +13,14 @@ const UserDetail = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`https://api.github.com/users/${userID}`);
+        const res = await fetch(`https://api.github.com/users/${userID}`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            authorization: `token ${process.env.REACT_APP_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        });
         const data = await res.json();
         setOneUser(data);
       } catch (error) {

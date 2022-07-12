@@ -21,11 +21,16 @@ const UsersPage = () => {
 
   // This function just returns a promise
   const getData = (user) => {
-    return fetch(`https://api.github.com/users/${user.login}`).then(
-      (response) => {
-        return response.json();
-      }
-    );
+    return fetch(`https://api.github.com/users/${user.login}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        authorization: `token ${process.env.REACT_APP_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      return response.json();
+    });
   };
 
   const sortData = (userArray) => {
@@ -45,7 +50,15 @@ const UsersPage = () => {
       try {
         // Starting search is undefined.
         const res = await fetch(
-          `https://api.github.com/search/users?q=${search}&per_page=8`
+          `https://api.github.com/search/users?q=${search}&per_page=8`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              authorization: `token ${process.env.REACT_APP_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+          }
         );
         const data = await res.json();
         setUserData(data);
@@ -70,20 +83,20 @@ const UsersPage = () => {
         setError("An error happened in specific user fetch - UsersPage");
       }
     };
-
     getSpecificUsers();
   }, [userData]);
 
   return (
     <div className="users-page">
-      <h1>Users Page</h1>
-      <SearchBox />
-      <DropDown
-        name="Sorting by"
-        value={sortValue}
-        handleChange={handleChange}
-      />
-
+      <div>
+        <h1>Users Page</h1>
+        <SearchBox />
+        <DropDown
+          name="Sorting by"
+          value={sortValue}
+          handleChange={handleChange}
+        />
+      </div>
       <div className="users">
         {filteredUsers ? (
           sortData(filteredUsers).map((user) => (

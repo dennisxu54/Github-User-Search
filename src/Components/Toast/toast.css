@@ -20,9 +20,9 @@
 
 @keyframes toastMove {
   0% {
-    right: -7rem;
+    transform: translateX(100%);
   }
   100% {
-    right: 1rem;
+    transform: translateX(0);
   }
 }
