@@ -45,7 +45,7 @@ const UsersPage = () => {
       try {
         // Starting search is undefined.
         const res = await fetch(
-          `https://api.github.com/srch/users?q=${search}&per_page=8`
+          `https://api.github.com/search/users?q=${search}&per_page=8`
         );
         const data = await res.json();
         setUserData(data);
