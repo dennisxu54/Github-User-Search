@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SpecificUser from "../../Components/SpecificUser/specificUser";
+import Toast from "../../Components/Toast/toast";
 import "./userDetails.css";
 
 const UserDetail = () => {
   let { userID } = useParams();
   const [oneUser, setOneUser] = useState();
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -15,7 +17,7 @@ const UserDetail = () => {
         const data = await res.json();
         setOneUser(data);
       } catch (error) {
-        console.log(error);
+        setError("An error happened in fetching specific user - UserDetails");
       }
     };
 
@@ -44,6 +46,11 @@ const UserDetail = () => {
         )
       ) : (
         <p>Data is not ready</p>
+      )}
+      {error && (
+        <div onClick={() => setError(false)}>
+          <Toast message={error} />
+        </div>
       )}
     </div>
   );
