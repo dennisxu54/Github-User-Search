@@ -1,35 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SpecificUser from "../../Components/SpecificUser/specificUser";
 import Toast from "../../Components/Toast/toast";
+import { useFetchUsers } from "../../Hooks/useFetchUser";
 import "./userDetails.css";
 
 const UserDetail = () => {
   let { userID } = useParams();
-  const [oneUser, setOneUser] = useState();
+  const { userData, errorMessage } = useFetchUsers(userID);
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const res = await fetch(`https://api.github.com/users/${userID}`, {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            authorization: `token ${process.env.REACT_APP_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await res.json();
-        setOneUser(data);
-      } catch (error) {
-        setError("An error happened in fetching specific user - UserDetails");
-      }
-    };
-
-    fetchUsers();
-  }, [userID]);
+  const [error, setError] = useState(errorMessage);
 
   return (
     <div className="user-details">
@@ -37,7 +17,7 @@ const UserDetail = () => {
         <button
           role="link"
           className="return-button"
-          onClick={() => navigate("/users", { replace: true })}
+          onClick={() => navigate(-1)}
         >
           Return to the Users
         </button>
@@ -45,16 +25,16 @@ const UserDetail = () => {
           This is the details of the user {userID}
         </h2>
       </div>
-      {oneUser ? (
-        oneUser.message !== "Not Found" ? (
-          <SpecificUser userDetails={oneUser} />
+      {userData ? (
+        userData.message !== "Not Found" ? (
+          <SpecificUser userDetails={userData} />
         ) : (
           <p>There is no user with this Login</p>
         )
       ) : (
         <p>Data is not ready</p>
       )}
-      {error && (
+      {errorMessage && (
         <div onClick={() => setError(false)}>
           <Toast message={error} />
         </div>

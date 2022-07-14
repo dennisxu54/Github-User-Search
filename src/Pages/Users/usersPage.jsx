@@ -1,36 +1,22 @@
 import * as qs from "query-string";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import DropDown from "../../Components/DropDown/dropDown";
 import SearchBox from "../../Components/SearchBox/searchBox";
 import Toast from "../../Components/Toast/toast";
 import UserCard from "../../Components/UserCard/userCard";
+import { useSearchUser } from "../../Hooks/useSearchUser";
 import "./usersPage.css";
 
 const UsersPage = () => {
-  const [userData, setUserData] = useState();
-  const [filteredUsers, setFilteredUsers] = useState();
   const location = useLocation();
   const { s: search } = qs.parse(location.search);
+  const { filteredUsers, searchErrorMessage } = useSearchUser(search);
   const [sortValue, setSortValue] = useState("Created_at");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(searchErrorMessage);
 
   const handleChange = (event) => {
     setSortValue(event.target.value);
-  };
-
-  // This function just returns a promise
-  const getData = (user) => {
-    return fetch(`https://api.github.com/users/${user.login}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        authorization: `token ${process.env.REACT_APP_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
-      return response.json();
-    });
   };
 
   const sortData = (userArray) => {
@@ -44,49 +30,6 @@ const UsersPage = () => {
       return [...userArray].sort((a, b) => a.followers - b.followers);
     }
   };
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        // Starting search is undefined.
-        const res = await fetch(
-          `https://api.github.com/search/users?q=${search}&per_page=8`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-              authorization: `token ${process.env.REACT_APP_API_KEY}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data = await res.json();
-        setUserData(data);
-      } catch (error) {
-        setError("An error happened in user fetch - UsersPage");
-      }
-    };
-
-    if (search) {
-      fetchUsers();
-    }
-  }, [search]);
-
-  useEffect(() => {
-    const getSpecificUsers = async () => {
-      try {
-        userData &&
-          Promise.all(userData.items.map(getData)).then((results) => {
-            // When all the promises have been resolved, then this will be executed
-            //Here all the promises have been resolved, so you would have an array with the ttTimes
-            setFilteredUsers(results);
-          });
-      } catch (error) {
-        setError("An error happened in specific user fetch - UsersPage");
-      }
-    };
-    getSpecificUsers();
-  }, [userData]);
 
   return (
     <div className="users-page">
