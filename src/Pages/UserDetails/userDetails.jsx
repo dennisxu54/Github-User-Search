@@ -32,7 +32,7 @@ const UserDetail = () => {
           <p>There is no user with this Login</p>
         )
       ) : (
-        <p>Data is not ready</p>
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
       )}
       {errorMessage && (
         <div onClick={() => setError(false)}>
