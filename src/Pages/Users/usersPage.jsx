@@ -14,7 +14,6 @@ const UsersPage = () => {
   const { s: search } = qs.parse(location.search);
   const [sortValue, setSortValue] = useState("Created_at");
   const [error, setError] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(search || "");
 
   const handleChange = (event) => {
     setSortValue(event.target.value);
@@ -51,7 +50,7 @@ const UsersPage = () => {
       try {
         // Starting search is undefined.
         const res = await fetch(
-          `https://api.github.com/search/users?q=${searchQuery}&per_page=8`,
+          `https://api.github.com/search/users?q=${search}&per_page=8`,
           {
             method: "GET",
             headers: {
@@ -68,8 +67,10 @@ const UsersPage = () => {
       }
     };
 
-    fetchUsers();
-  }, [searchQuery]);
+    if (search) {
+      fetchUsers();
+    }
+  }, [search]);
 
   useEffect(() => {
     const getSpecificUsers = async () => {
@@ -91,7 +92,7 @@ const UsersPage = () => {
     <div className="users-page">
       <div>
         <h1>Users Page</h1>
-        <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <SearchBox searchQuery={search} setSearchQuery={search} />
         <DropDown
           name="Sorting by"
           value={sortValue}
@@ -99,12 +100,17 @@ const UsersPage = () => {
         />
       </div>
       <div className="users">
-        {filteredUsers ? (
-          sortData(filteredUsers).map((user) => (
-            <UserCard key={user.id} userDetails={user} />
-          ))
+        {/* If search is undefined or empty then there will be no users to display */}
+        {search ? (
+          filteredUsers ? (
+            sortData(filteredUsers).map((user) => (
+              <UserCard key={user.id} userDetails={user} />
+            ))
+          ) : (
+            <p>Data is loading</p>
+          )
         ) : (
-          <p>Data is not ready</p>
+          <p>Start searching</p>
         )}
       </div>
       {error && (
