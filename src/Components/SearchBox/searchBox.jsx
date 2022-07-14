@@ -1,19 +1,22 @@
 import "./searchBox.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const SearchBox = ({ searchQuery, setSearchQuery }) => {
+const SearchBox = () => {
   let navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+
 
   const onSubmit = (e) => {
-    navigate(`?s=${searchQuery}`, { replace: true });
+    navigate(`/users?s=${searchQuery}`, { replace: true });
     e.preventDefault();
   };
 
   return (
-    <form action="/users" method="get" onSubmit={(e) => onSubmit}>
+    <form autoComplete="off" onSubmit={(e) => onSubmit}>
       <input
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={e => setSearchQuery(e.target.value)}
         type="text"
         id="header-search"
         placeholder="Search users"
