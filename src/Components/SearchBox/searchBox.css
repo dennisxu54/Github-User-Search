@@ -1,3 +1,7 @@
 .search-button {
     cursor: pointer;
 }
+
+.search-box {
+    margin-right: .3rem;
+}

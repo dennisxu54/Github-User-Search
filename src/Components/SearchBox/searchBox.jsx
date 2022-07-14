@@ -15,6 +15,7 @@ const SearchBox = () => {
   return (
     <form autoComplete="off" onSubmit={(e) => onSubmit}>
       <input
+      className="search-box"
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
         type="text"
