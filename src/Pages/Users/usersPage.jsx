@@ -50,7 +50,7 @@ const UsersPage = () => {
               <UserCard key={user.id} userDetails={user} />
             ))
           ) : (
-            <p>Data is loading</p>
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
           )
         ) : (
           <p>Start searching</p>
