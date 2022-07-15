@@ -5,7 +5,6 @@ const SpecificUser = ({ userDetails }) => {
     login,
     avatar_url,
     html_url,
-    repos_url,
     name,
     blog,
     location,
