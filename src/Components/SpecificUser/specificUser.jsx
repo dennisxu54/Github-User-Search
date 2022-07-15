@@ -64,7 +64,7 @@ const SpecificUser = ({ userDetails }) => {
         <p>Public Gists: {public_gists}</p>
         {blog ? (
           <p>
-            User's blog: <a href={repos_url}>{blog}</a>
+            User's blog: <a href={blog}>{blog}</a>
           </p>
         ) : (
           <p>User has no blog website</p>
