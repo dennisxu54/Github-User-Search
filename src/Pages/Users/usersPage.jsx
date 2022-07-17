@@ -53,7 +53,7 @@ const UsersPage = () => {
             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
           )
         ) : (
-          <p>Start searching</p>
+          <h2 className="start-searching"><b>Start searching</b></h2>
         )}
       </div>
       {error && (

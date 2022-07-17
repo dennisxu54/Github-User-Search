@@ -3,6 +3,14 @@
     text-align: center;
 }
 
+.start-searching {
+  font-size: 70px;
+  font-weight: 500;
+  background-image: linear-gradient(45deg, #16d3ec, #0066ff);
+  color: transparent;
+  background-clip: text;
+}
+
 .users {
     margin-top: 2em;
     display: flex;
