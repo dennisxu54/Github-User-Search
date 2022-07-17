@@ -50,7 +50,7 @@ const UsersPage = () => {
               <UserCard key={user.id} userDetails={user} />
             ))
           ) : (
-            <div class="lds-ring">
+            <div className="lds-ring">
               <div></div>
               <div></div>
               <div></div>
