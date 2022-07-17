@@ -10,7 +10,6 @@ const UserDetail = () => {
   const { userData, errorMessage } = useFetchUsers(userID);
   const navigate = useNavigate();
   const [error, setError] = useState(errorMessage);
-  console.log("This it he console log", userData)
 
   return (
     <div className="user-details">
