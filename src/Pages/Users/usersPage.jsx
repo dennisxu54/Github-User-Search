@@ -50,10 +50,17 @@ const UsersPage = () => {
               <UserCard key={user.id} userDetails={user} />
             ))
           ) : (
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div class="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           )
         ) : (
-          <h2 className="start-searching"><b>Start searching</b></h2>
+          <h2 className="start-searching">
+            <b>Start searching</b>
+          </h2>
         )}
       </div>
       {error && (
