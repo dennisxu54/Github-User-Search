@@ -36,7 +36,6 @@ export function useSearchUser(search) {
         );
         const data = await res.json();
         setSearchData(data);
-        // console.log(searchData);
       } catch (error) {
         setSearchErrorMessage("An error happened in user fetch - UsersPage");
       }

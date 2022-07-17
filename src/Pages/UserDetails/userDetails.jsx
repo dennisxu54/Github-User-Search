@@ -10,6 +10,7 @@ const UserDetail = () => {
   const { userData, errorMessage } = useFetchUsers(userID);
   const navigate = useNavigate();
   const [error, setError] = useState(errorMessage);
+  console.log("This it he console log", userData)
 
   return (
     <div className="user-details">
@@ -19,20 +20,24 @@ const UserDetail = () => {
           className="return-button"
           onClick={() => navigate(-1)}
         >
-          Return to the Users
+          Return to the last page
         </button>
-        <h2 className="user-detail-title">
-          This is the details of the user {userID}
-        </h2>
       </div>
       {userData ? (
         userData.message !== "Not Found" ? (
           <SpecificUser userDetails={userData} />
         ) : (
-          <p>There is no user with this Login</p>
+          <h2 className="user-detail-title">
+            There is no such user: {userID}
+          </h2>
         )
       ) : (
-        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       )}
       {errorMessage && (
         <div onClick={() => setError(false)}>

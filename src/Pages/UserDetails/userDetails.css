@@ -12,11 +12,10 @@
   background-color: navy;
   color: whitesmoke;
   padding: 0.4rem;
-  margin: auto 0 auto 1rem;
   cursor: pointer;
   transition: 0.3s ease;
   margin: auto;
-  margin-right: 1rem;
+  justify-content: center;
 }
 
 .return-button:hover {
@@ -27,7 +26,7 @@
 .user-detail-title {
   display: inline-block;
   margin: auto;
-  margin-left: 0;
+  margin-top: 1rem;
 }
 
 .lds-ring {
