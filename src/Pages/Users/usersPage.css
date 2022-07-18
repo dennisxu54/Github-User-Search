@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.no-username {
+  font-size: x-large;
+  color: #d34108;
+}
+
 .start-searching {
   font-size: 70px;
   font-weight: 500;
