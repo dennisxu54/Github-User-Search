@@ -46,9 +46,15 @@ const UsersPage = () => {
         {/* If search is undefined or empty then there will be no users to display */}
         {search ? (
           filteredUsers ? (
-            sortData(filteredUsers).map((user) => (
-              <UserCard key={user.id} userDetails={user} />
-            ))
+            filteredUsers.length === 0 ? (
+              <h2 className="no-username">
+                <b>There are no users with this username.</b>
+              </h2>
+            ) : (
+              sortData(filteredUsers).map((user) => (
+                <UserCard key={user.id} userDetails={user} />
+              ))
+            )
           ) : (
             <div className="lds-ring">
               <div></div>
