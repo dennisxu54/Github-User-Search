@@ -1,14 +1,29 @@
 .detail-box {
-    display: flex;
-    border: 2px solid blue;
-    margin: 1em 500px;
-    padding: 10px;
-    justify-content: space-between;
-    background-color: whitesmoke;
+  border: 2px solid blue;
+  margin-top: 1em;
+  margin-left: 25%;
+  padding: 10px;
+  width: calc(50% - 10px);
+  /* background-color: whitesmoke; */
+  border-radius: 0.5em;
+  overflow: auto;
 }
 
+.detail-box hr {
+  height: 1px;
+  border-color: blue;
+}
+
+
 .user-detail-img {
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .user-detail-img {
+    width: 130px;
+    height: 130px;
+  }
 }

@@ -22,27 +22,29 @@ const UserDetail = () => {
           Return to the last page
         </button>
       </div>
-      {userData ? (
-        userData.message !== "Not Found" ? (
-          <SpecificUser userDetails={userData} />
+      <div>
+        {userData ? (
+          userData.message !== "Not Found" ? (
+            <SpecificUser userDetails={userData} />
+          ) : (
+            <h2 className="user-detail-title">
+              There is no such user: {userID}
+            </h2>
+          )
         ) : (
-          <h2 className="user-detail-title">
-            There is no such user: {userID}
-          </h2>
-        )
-      ) : (
-        <div className="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      )}
-      {errorMessage && (
-        <div onClick={() => setError(false)}>
-          <Toast message={error} />
-        </div>
-      )}
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
+        {error && (
+          <div onClick={() => setError(false)}>
+            <Toast message={error} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

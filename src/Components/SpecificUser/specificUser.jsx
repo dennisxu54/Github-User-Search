@@ -19,7 +19,7 @@ const SpecificUser = ({ userDetails }) => {
   return (
     <div className="detail-box">
       <img src={avatar_url} alt="avatar" className="user-detail-img" />
-
+      <hr />
       <div>
         <p>
           Login: <b>{login}</b>
@@ -43,7 +43,7 @@ const SpecificUser = ({ userDetails }) => {
           </a>
         </p>
       </div>
-
+      <hr />
       <div>
         {name !== "undefined" ? (
           <p>
